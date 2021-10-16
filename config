@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+#
+# NICE EXAMPLE CONFIG
+#
+# PLACE IN ~/.config/nice/config
+#
+
+get_distro    # Initializes $DISTRO
+get_kernel    # Initializes $KERNEL
+get_cpu       # Initializes $CPU
+get_gpu       # Initializes $GPU
+get_pkgcount  # Initializes $PKGS
+get_shell     # Initializes $SH
+get_pallete   # Initializes $PALLETE
+
+ASCII_ART=( "    ___   " \
+        "   (.. |  " \
+        "   (<> |  " \
+        "  / __  \ " \
+        " ( /  \ /|" \
+        "_/\ __)/_)" \
+        "\/-____\/ " )
+
+# You are going to have to define these variables
+# or use the built in functions to initialize them.
+LAYOUT=( "${ASCII_ART[0]} ${BLUE}${USER}${WHITE}@${BLUE}$(cat /etc/hostname)${BLANK}" \
+         "${ASCII_ART[1]} ${GREEN}dis ${WHITE}~ ${GREEN}$DISTRO ${BLANK}" \
+         "${ASCII_ART[2]} ${CYAN}ker ${WHITE}~ ${CYAN}$KERNEL ${BLANK}"
+         "${ASCII_ART[3]} ${RED}cpu ${WHITE}~ ${RED}$CPU ${BLANK}" \
+         "${ASCII_ART[4]} ${YELLOW}gpu ${WHITE}~ ${YELLOW}$GPU ${BLANK}" \
+         "${ASCII_ART[5]} ${BLUE}pkg ${WHITE}~ ${BLUE}$PKGS ${BLANK}" \
+         "${ASCII_ART[6]} $PALLETE ${BLANK}")

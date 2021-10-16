@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+# shellcheck source=$HOME/.config/nice/config
+
+CONFIG="$HOME/.config/nice/config"
+
+BLANK='\033[0m'           # Text Reset
+
+BLACK='\033[0;30m'        # Black
+RED='\033[0;31m'          # Red
+GREEN='\033[0;32m'        # Green
+YELLOW='\033[0;33m'       # Yellow
+BLUE='\033[0;34m'         # Blue
+PURPLE='\033[0;35m'       # Purple
+CYAN='\033[0;36m'         # Cyan
+WHITE='\033[0;37m'        # White
+
+BBLACK='\033[0;40m'        # Black
+BRED='\033[0;41m'          # Red
+BGREEN='\033[0;42m'        # Green
+BYELLOW='\033[0;43m'       # Yellow
+BBLUE='\033[0;44m'         # Blue
+BPURPLE='\033[0;45m'       # Purple
+BCYAN='\033[0;46m'         # Cyan
+BWHITE='\033[0;47m'        # White
+
+get_cpu ()
+{
+    CPU="$(lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\1/p')"
+}
+
+get_gpu ()
+{
+    GPU
+}
+
+get_distro ()
+{
+    source /etc/os-release
+    DISTRO="$NAME"
+}
+
+get_gpu ()
+{
+    GPU="$(lspci | grep VGA | cut -d "[" -f2 | cut -d "]" -f1)"
+}
+
+get_kernel ()
+{
+    KERNEL="$(uname -sr)"
+}
+
+get_pkgcount ()
+{
+    # Ensure we can find which distro we are using
+    get_distro
+
+    # $ID is extracted from /etc/os-release
+    case $ID in
+        "arch")
+            PKGS="$(pacman -Q | wc -l)"
+            ;;
+        "void")
+            PKGS="$(xbps-query -l | wc -l)"
+            ;;
+        *)
+            PKGS="UNK"
+            ;;
+    esac
+}
+
+get_shell ()
+{
+    SH="$(ps -p $$ | awk 'FNR == 2 { print $4 }')"
+}
+
+get_pallete ()
+{
+    PALLETE="$BBLACK   $BRED   $BGREEN   $BYELLOW   $BBLUE   $BPURPLE   $BCYAN   $BWHITE   $BLANK"
+}
+
+if [ -f "$CONFIG" ]; then
+    source "$CONFIG"
+else
+    echo "Provide a config file at ~/.config/nice/config"
+fi
+
+for i in "${LAYOUT[@]}"; do
+    echo -e "$i"
+done
