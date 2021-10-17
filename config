@@ -14,13 +14,13 @@ get_pkgcount  # Initializes $PKGS
 get_shell     # Initializes $SH
 get_pallete   # Initializes $PALLETE
 
-ASCII_ART=( "    ___   " \
-        "   (.. |  " \
-        "   (<> |  " \
-        "  / __  \ " \
-        " ( /  \ /|" \
-        "_/\ __)/_)" \
-        "\/-____\/ " )
+ASCII_ART=( "${BOLD}    ___   " \
+        "${BOLD}   (.. |  " \
+        "${BOLD}   (<> |  " \
+        "${BOLD}  / __  \ " \
+        "${BOLD} ( /  \ /|" \
+        "${BOLD}_/\ __)/_)" \
+        "${BOLD}\/-____\/ " )
 
 # You are going to have to define these variables
 # or use the built in functions to initialize them.

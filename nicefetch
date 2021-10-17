@@ -5,6 +5,7 @@
 CONFIG="$HOME/.config/nice/config"
 
 BLANK='\033[0m'           # Text Reset
+BOLD='\033[1m'
 
 BLACK='\033[0;30m'        # Black
 RED='\033[0;31m'          # Red
@@ -27,11 +28,6 @@ BWHITE='\033[0;47m'        # White
 get_cpu ()
 {
     CPU="$(lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\1/p')"
-}
-
-get_gpu ()
-{
-    GPU
 }
 
 get_distro ()
