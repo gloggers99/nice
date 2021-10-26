@@ -1,0 +1,5 @@
+Installation
+
+- Download nicefetch script (https://raw.githubusercontent.com/ctr7pl/nice/master/nicefetch)
+- Place the script into /bin
+- Command: `sudo curl https://raw.githubusercontent.com/ctr7pl/nice/master/nicefetch -o /bin/nicefetch; sudo chmod +x /bin/nicefetch`
