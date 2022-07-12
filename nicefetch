@@ -56,6 +56,9 @@ get_pkgcount ()
         "arch")
             PKGS="$(pacman -Q | wc -l)"
             ;;
+        "artix")
+            PKGS="$(pacman -Q | wc -l)"
+            ;;
         "void")
             PKGS="$(xbps-query -l | wc -l)"
             ;;
